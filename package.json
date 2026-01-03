@@ -2,7 +2,7 @@
   "name": "nxtfi-hackathon",
   "version": "1.0.0",
   "description": "BNB Hackathon Submission - NxtFi Payment Layer",
-  "type": "module",
+  
   "scripts": {
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network bscTestnet"

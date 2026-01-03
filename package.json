@@ -2,24 +2,16 @@
   "name": "nxtfi-hackathon",
   "version": "1.0.0",
   "description": "BNB Hackathon Submission - NxtFi Payment Layer",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nxtfilab/nxtfi-hackathon.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/nxtfilab/nxtfi-hackathon/issues"
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.ts --network bscTestnet"
   },
-  "homepage": "https://github.com/nxtfilab/nxtfi-hackathon#readme",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "hardhat": "^3.1.2"
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "dotenv": "^16.4.5"
   }
 }

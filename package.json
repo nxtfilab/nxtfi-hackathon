@@ -1,15 +1,15 @@
 {
   "name": "nxtfi-hackathon",
   "version": "1.0.0",
-  "description": "BNB Hackathon Submission - NxtFi Payment Layer",
-  
+  "description": "BNB Chain Hackathon – NxtFi Merchant Payment Escrow",
   "scripts": {
     "compile": "hardhat compile",
-    "deploy": "hardhat run scripts/deploy.ts --network bscTestnet"
+    "deploy": "hardhat run scripts/deploy.ts --network bscTestnet",
+    "interact": "hardhat run scripts/interact.ts --network bscTestnet"
   },
   "devDependencies": {
-    "hardhat": "^2.22.0",
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "typescript": "^5.3.3",
     "ts-node": "^10.9.2",
     "dotenv": "^16.4.5"

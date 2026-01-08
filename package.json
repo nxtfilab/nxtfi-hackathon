@@ -2,16 +2,41 @@
   "name": "nxtfi-hackathon",
   "version": "1.0.0",
   "description": "BNB Chain Hackathon – NxtFi Merchant Payment Escrow",
+  "main": "index.js",
   "scripts": {
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network bscTestnet",
-    "interact": "hardhat run scripts/interact.ts --network bscTestnet"
+    "interact": "hardhat run scripts/interact.ts --network bscTestnet",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "node": "hardhat node",
+    "clean": "hardhat clean",
+    "lint": "npx eslint . --ext .ts",
+    "format": "npx prettier --write ."
   },
+  "keywords": [
+    "blockchain",
+    "escrow",
+    "payments",
+    "bnb",
+    "smart-contract"
+  ],
+  "author": "NxtFi Team",
+  "license": "MIT",
   "devDependencies": {
-    "hardhat": "2.22.0",
     "@nomicfoundation/hardhat-toolbox": "5.0.0",
-    "typescript": "^5.3.3",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.0.0",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "chai": "^4.3.7",
+    "dotenv": "^16.4.5",
+    "hardhat": "2.22.0",
+    "solidity-coverage": "^0.8.10",
     "ts-node": "^10.9.2",
-    "dotenv": "^16.4.5"
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
   }
 }

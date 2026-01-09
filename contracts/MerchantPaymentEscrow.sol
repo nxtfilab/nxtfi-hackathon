@@ -105,23 +105,28 @@ contract MerchantPaymentEscrow {
         emit PaymentDisputed(paymentId, msg.sender);
     }
     
-    function resolveDispute(bytes32 paymentId, bool refundCustomer) external onlyOwner {
+    function resolveDispute(bytes32 paymentId, bool refundCustomer, address merchant) external onlyOwner {
         Payment storage payment = payments[paymentId];
         require(payment.disputed, "Not disputed");
         require(!payment.released, "Already released");
+        require(merchants[merchant].registered, "Invalid merchant");
         
         if (refundCustomer) {
             payable(payment.customer).transfer(payment.amount);
             emit PaymentRefunded(paymentId, payment.customer, payment.amount);
         } else {
-            // Find which merchant this belongs to
-            for (uint256 i = 0; i < merchantPayments[msg.sender].length; i++) {
-                if (merchantPayments[msg.sender][i] == paymentId) {
-                    merchants[msg.sender].withdrawableBalance += payment.amount;
+            // Verify this payment belongs to the merchant
+            bool found = false;
+            for (uint256 i = 0; i < merchantPayments[merchant].length; i++) {
+                if (merchantPayments[merchant][i] == paymentId) {
+                    found = true;
                     break;
                 }
             }
-            emit PaymentReleased(paymentId, msg.sender);
+            require(found, "Payment does not belong to merchant");
+            
+            merchants[merchant].withdrawableBalance += payment.amount;
+            emit PaymentReleased(paymentId, merchant);
         }
         
         payment.released = true;

@@ -1,12 +1,17 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Escrow = await ethers.getContractFactory("MerchantPaymentEscrow");
-  const escrow = await Escrow.deploy();
+  console.log("Deploying NxtFiPayments contract...");
 
-  await escrow.waitForDeployment();
+  const NxtFiPayments = await ethers.getContractFactory("NxtFiPayments");
+  const contract = await NxtFiPayments.deploy();
 
-  console.log("MerchantPaymentEscrow deployed to:", await escrow.getAddress());
+  await contract.waitForDeployment();
+
+  const address = await contract.getAddress();
+
+  console.log("NxtFiPayments deployed to:", address);
+  console.log("Owner (feeCollector):", await contract.owner());
 }
 
 main().catch((error) => {
